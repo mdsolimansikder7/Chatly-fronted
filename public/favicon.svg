@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="chatly-gradient" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#chatly-gradient)"/>
+  <path d="M17 18.5c0-3.04 2.46-5.5 5.5-5.5h19c3.04 0 5.5 2.46 5.5 5.5v15c0 3.04-2.46 5.5-5.5 5.5H31l-8.5 8v-8h-.5c-2.76 0-5-2.24-5-5V18.5Z" fill="#fff" fill-opacity=".97"/>
+  <circle cx="26" cy="26" r="2.3" fill="#a855f7"/>
+  <circle cx="32" cy="26" r="2.3" fill="#a855f7"/>
+  <circle cx="38" cy="26" r="2.3" fill="#a855f7"/>
+</svg>
