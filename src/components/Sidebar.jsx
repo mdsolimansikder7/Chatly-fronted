@@ -77,7 +77,7 @@ export default function Sidebar({ chats, activeId, onSelect, profile, onOpenSett
                   <span className="theme-muted shrink-0 text-xs">{lastMessage?.time}</span>
                 </div>
                 <div className="flex items-center justify-between gap-2">
-                  <p className="theme-muted truncate text-sm">{lastMessage?.text}</p>
+                  <p className="theme-muted truncate text-sm">{lastMessage?.text || chat.chatlyId}</p>
                   {chat.unread > 0 && !chat.muted && (
                     <span className="flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-pink-500 px-1.5 text-xs font-bold text-white">
                       {chat.unread}

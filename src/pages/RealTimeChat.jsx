@@ -61,6 +61,7 @@ const conversationToView = (conversation, userId, locale) => {
     isGroup: conversation.isGroup,
     name: conversation.isGroup ? conversation.groupName : other?.name || "New conversation",
     avatar: conversation.isGroup ? "" : other?.avatar || "",
+    chatlyId: conversation.isGroup ? "" : other?.chatlyId || "",
     otherUser: other ? { ...other, _id: getId(other) } : null,
     otherUserId: other ? getId(other) : "",
     memberIds: members.map(getId),
@@ -206,6 +207,10 @@ export default function RealTimeChat() {
         liveSocket.on("onlineUsers", (ids) => setOnlineIds(ids.map(String)));
         liveSocket.on("userOnline", (id) => setOnlineIds((ids) => [...new Set([...ids, String(id)])]));
         liveSocket.on("userOffline", (id) => setOnlineIds((ids) => ids.filter((item) => item !== String(id))));
+        liveSocket.on("friendRequestAccepted", () => {
+          refreshChats().catch(() => setError(t("serverError")));
+          refreshRequestBadge();
+        });
         liveSocket.on("messagesSeen", ({ conversationId, seenBy }) => {
           if (String(seenBy) === userId) return;
           setChats((previousChats) => previousChats.map((chat) => (
@@ -251,7 +256,7 @@ export default function RealTimeChat() {
       window.clearInterval(requestPollRef.current);
       disconnectSocket();
     };
-  }, [addIncomingMessage, locale, navigate, refreshRequestBadge, t, userId]);
+  }, [addIncomingMessage, locale, navigate, refreshChats, refreshRequestBadge, t, userId]);
 
   const displayChats = useMemo(() => chats
     .map((chat) => {
