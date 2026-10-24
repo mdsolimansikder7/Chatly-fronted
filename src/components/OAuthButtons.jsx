@@ -1,4 +1,4 @@
-import { FaFacebookF, FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import api from "../services/api";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -10,14 +10,14 @@ export default function OAuthButtons() {
   };
 
   return (
-    <div className="space-y-3">
-      <button type="button" onClick={() => startOAuth("google")} className="theme-field theme-focus flex w-full items-center justify-center gap-3 rounded-2xl px-4 py-3.5 font-semibold transition hover:brightness-105">
-        <FaGoogle className="text-rose-500" />
-        <span className="theme-text">{t("continueGoogle")}</span>
-      </button>
-      <button type="button" onClick={() => startOAuth("facebook")} className="flex w-full items-center justify-center gap-3 rounded-2xl bg-[#1877f2] px-4 py-3.5 font-semibold text-white transition hover:bg-[#166fe5]">
-        <FaFacebookF />
-        <span>{t("continueFacebook")}</span>
+    <div>
+      <button
+        type="button"
+        onClick={() => startOAuth("google")}
+        className="group flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3.5 font-semibold text-slate-700 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-50 hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-violet-500/20 active:scale-[0.99]"
+      >
+        <FcGoogle className="text-xl transition-transform duration-200 group-hover:scale-110" aria-hidden="true" />
+        <span>{t("signInGoogle")}</span>
       </button>
     </div>
   );
