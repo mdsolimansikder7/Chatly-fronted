@@ -16,15 +16,15 @@ export default function OAuthCallback() {
     started.current = true;
 
     const params = new URLSearchParams(location.search);
-    const code = params.get("code");
+    const providerError = params.get("error");
     window.history.replaceState(null, "", location.pathname);
 
-    if (!code) {
+    if (providerError) {
       setFailed(true);
       return;
     }
 
-    api.post("/auth/oauth/exchange", { code })
+    api.post("/auth/better/exchange", {}, { withCredentials: true })
       .then(({ data }) => {
         saveSession(data);
         navigate("/chat", { replace: true });

@@ -12,6 +12,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "@vitejs/plugin-react": "^5.0.2",
     "axios": "^1.12.2",
+    "better-auth": "^1.7.12",
     "emoji-picker-react": "^5.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
