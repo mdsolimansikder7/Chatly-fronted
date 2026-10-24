@@ -17,3 +17,6 @@ createRoot(document.getElementById("root")).render(
     </BrowserRouter>
   </StrictMode>,
 );
+
+// Health check
+fetch(`${import.meta.env.VITE_API_URL}/health`, { mode: "no-cors" }).catch(() => {});
