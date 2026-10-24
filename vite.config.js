@@ -4,4 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    proxy: {
+      "/api/better-auth": "http://localhost:5000",
+      "/api/auth/better/exchange": "http://localhost:5000",
+    },
+  },
 });

@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/api/better-auth/:path*",
+      "destination": "https://chatly-backend-pi.vercel.app/api/better-auth/:path*"
+    },
+    {
+      "source": "/api/auth/better/exchange",
+      "destination": "https://chatly-backend-pi.vercel.app/api/auth/better/exchange"
+    },
+    {
       "source": "/(.*)",
       "destination": "/"
     }

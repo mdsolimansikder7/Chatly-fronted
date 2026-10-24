@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
-import api from "../services/api";
 import { saveSession } from "../services/session";
 
 export default function OAuthCallback() {
@@ -24,8 +23,17 @@ export default function OAuthCallback() {
       return;
     }
 
-    api.post("/auth/better/exchange", {}, { withCredentials: true })
-      .then(({ data }) => {
+    fetch("/api/auth/better/exchange", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Could not exchange Better Auth session.");
+        return response.json();
+      })
+      .then((data) => {
         saveSession(data);
         navigate("/chat", { replace: true });
       })
